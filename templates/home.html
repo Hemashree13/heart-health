@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heart Health</title>
+    <style>
+      body{
+        background-color:#2cab9e;
+        color:white;
+      }
+      h1{
+        text-align: center;
+        font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        font-size:75px;
+        margin-top: 10px;
+        margin-bottom: 20px;
+      }
+      #main{
+        font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        font-size: 40px;
+        display:flex;
+      }
+      #male,#age,#education,#currentSmoker,#cigsPerDay,#BPMeds,#sysBP,#prevalentstroke,#prevalentHyp,#diabetes,#totChol,#diaBP,#BMI,#heartRate,#glucose{
+        flex:1;
+        padding: 15px;
+        border: 1px solid #ddd;
+        margin: 5px;
+        margin-right: 15px;
+        font-size: 15px;
+      }
+      #para1,#para2,#para3,#para4,#para5,#para6,#para7,#para8,#para9,#para10,#para11,#para12,#para13,#para14,#para15{
+        display:flex;
+        padding: 15px;
+        border: 1px solid #ddd;
+        margin: 5px;
+        font-size:25px;
+      }
+      label{
+        font-size:30px;
+      }
+      div{
+        display:flex;
+        justify-content: center;
+        align-items: center;
+      }
+      button{
+        margin-left: 20px;
+  border-radius: 30px;
+  border: 3px solid white;
+  color: black;
+  padding: 8px 28px;
+  font-family: arial;
+       font-size:20px;
+      }
+      button:hover{
+        box-shadow:0px 0px 0.2em 0.2em #6f7575;
+      }
+    </style>
+</head>
+<body>
+    <h1>HEART HEALTH</h1>
+    <p id="main">
+    <form action="/predict" method="POST">
+      <p id="para1">
+    <label for="male">Gender:</label>
+    <select id="male" name="male" required>
+      <option value="1">Male</option>
+      <option value="0">Female</option>
+    </select></p>
+    <p id="para6">
+    <label for="age">Age:</label>
+    <input type="number" id="age" name="age" required></p>
+    <p id="para7">
+    <label for="education">Education:</label>
+    <select id="education" name="education" required>
+      <option value="0.0">Not completed schooling</option>
+      <option value="1.0">High School Diploma</option>
+      <option value="2.0">Undergraduate Degree</option>
+      <option value="3.0">Postgraduate Degree</option>
+      <option value="4.0">PhD</option>
+    </select><br></p>
+    <p id="para2">
+    <label for="currentSmoker">Are you currently a smoker?</label>
+    <select id="currentSmoker" name="currentSmoker" required>
+      <option value="1">Yes</option>
+      <option value="0">No</option>
+    </select></p>
+    <p id="para8">
+    <label for="cigsPerDay">Number of daily cigarettes:</label>
+    <input type="number" id="cigsPerDay" name="cigsPerDay" required></p>
+    <p id="para9">
+    <label for="BPMeds">Are you currently on a BP medication?</label>
+    <select id="BPMeds" name="BPMeds" required>
+      <option value="1">Yes</option>
+      <option value="0">No</option>
+    </select></p>
+    <p id="para3">
+    <label for="prevalentstroke">Have you ever experienced a stroke?</label>
+    <select id="prevalentstroke" name="prevalentstroke" required>
+      <option value="1">Yes</option>
+      <option value="0">No</option>
+    </select></p>
+    <p id="para10">
+    <label for="prevalentHyp">Do you have Hypertension?</label>
+    <select id="prevalentHyp" name="prevalentHyp" required>
+      <option value="1">Yes</option>
+      <option value="0">No</option>
+    </select></p>
+    <p id="para11">
+    <label for="diabetes">Do you have Diabetes?</label>
+    <select id="diabetes" name="diabetes" required>
+      <option value="1">Yes</option>
+      <option value="0">No</option>
+    </select></p>
+    <p id="para4">
+    <label for="totChol">Enter your cholestrol level:</label>
+    <input type="number" id="totChol" name="totChol" required></p>
+    <p id="para12">
+    <label for="sysBP">Enter your systolic blood pressure:</label>
+    <input type="number" id="sysBP" name="sysBP" required></p>
+    <p id="para13">
+    <label for="diaBP">Enter your diastolic blood pressure:</label>
+    <input type="number" id="diaBP" name="diaBP" required></p>
+    <p id="para5">
+    <label for="BMI">Enter your BMI:</label>
+    <input type="number" id="BMI" step="any" name="BMI" required></p>
+    <p id="para14">
+    <label for="heartRate">Enter your resting heart level:</label>
+    <input type="number" id="heartRate" name="heartRate" required></p>
+    <p id="para15">
+    <label for="glucose">Enter your glucose level:</label>
+    <input type="number" id="glucose" name="glucose" required></p>
+  </p><div>
+    <button value="TenYearHDP">Predict</button></div>
+    </form>
+  </p>
+    {% if prediction %}
+    <p style="font-size:30px;text-align:center;">You {{prediction}} develop heart disease.</p>
+    {% endif %}
+</body>
+</html>
